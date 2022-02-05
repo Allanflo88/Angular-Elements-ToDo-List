@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  NHOST_BACKEND_URL: 'https://wcjmffobqvrrnmsbbdql.nhost.run'
 };
 
 /*
