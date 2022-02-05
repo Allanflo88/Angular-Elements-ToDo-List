@@ -1,4 +1,12 @@
 <p>Wellcome</p>
+
+<form [formGroup]="loginFormGroup">
+    <input type="email" formControlName="email"/>
+    <input type="password" formControlName="password"/>
+    <button (click)="signInEmailPassword()">Login</button>
+</form>
+{{loginError}}
+
 <a href="https://wcjmffobqvrrnmsbbdql.nhost.run/v1/auth/signin/provider/github">
     <button >Login com GitHub</button>
 </a>
