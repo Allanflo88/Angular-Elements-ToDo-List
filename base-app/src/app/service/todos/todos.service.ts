@@ -12,4 +12,8 @@ export class TodosService {
   public getAllTodos(): Promise<GraphqlRequestResponse>{
     return this._graphQlService.query('todos', ['id', 'created_at', 'name', 'is_completed'])
   }
+
+  public insertTodo(text: string): void {
+    this._graphQlService.mutation('insert_todos', {name: text});
+  }
 }

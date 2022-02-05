@@ -14,6 +14,21 @@ export class GraphqlService {
     this._nhostClient = _nhostService._nhostClient
   }
 
+  public mutation(mutation: string, data: Object, returnFormat: Array<string> = ['id']): Promise<GraphqlRequestResponse> {
+    return this._nhostClient.graphql.request(this.buildMutationRequest(mutation, data, returnFormat))
+  }
+
+  private buildMutationRequest(mutation: string, data: Object, returnFormat: Array<string>): string {
+    return `
+        ${mutation}(objects: [${data.toString().replace(/,/, ' ')}]) {
+          returning {
+            ${this.formatFieldsArray(returnFormat)}
+          }
+        }
+      }
+    `
+  }
+
   public query(
     collection: string,
     fields: Array<string>
